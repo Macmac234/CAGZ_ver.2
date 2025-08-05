@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clarence Arcade Game Zone - Simple & Fun Games</title>
+    
+    <!-- Open Graph Meta Tags for better link previews -->
+    <meta property="og:title" content="Clarence Arcade Game Zone - Simple & Fun Games">
+    <meta property="og:description" content="Maglaro at mag-enjoy libre lang ito! Play 5 exciting games including Snake, Memory Cards, Tic Tac Toe, Rock Paper Scissors, and Number Guessing.">
+    <meta property="og:image" content="https://cagz.onrender.com/mypicture.png">
+    <meta property="og:url" content="https://cagz.onrender.com">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Clarence Arcade Game Zone">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Clarence Arcade Game Zone - Simple & Fun Games">
+    <meta name="twitter:description" content="Maglaro at mag-enjoy libre lang ito! Play 5 exciting games for free.">
+    <meta name="twitter:image" content="https://cagz.onrender.com/mypicture.png">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+    
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <i class="fas fa-gamepad"></i>
+                <span>Clarence Arcade Game Zone</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#games" class="nav-link">Games</a>
+                <a href="#leaderboard" class="nav-link">Leaderboard</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#" class="nav-link" onclick="showCreatePlayerModal()">Create Player Name</a>
+                <a href="#" class="nav-link" onclick="showLoginModal()">Log in</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <!-- Home Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Welcome to <span class="gradient-text">Clarence Arcade Game Zone</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Maglaro at mag-enjoy libre lang ito!
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Games</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">∞</span>
+                        <span class="stat-label">Fun</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Free</span>
+                    </div>
+                </div>
+                <button class="cta-button" onclick="scrollToGames()">
+                    <span>Start Playing</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-elements">
+                    <div class="floating-element" style="--delay: 0s"><img src="logo.png" alt="Logo"></div>
+                    <div class="floating-element" style="--delay: 1s">🎯</div>
+                    <div class="floating-element" style="--delay: 2s">🏆</div>
+                    <div class="floating-element" style="--delay: 3s">⭐</div>
+                    <div class="floating-element" style="--delay: 4s">🎲</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Games Section -->
+        <section id="games" class="games-section">
+            <div class="container">
+                <h2 class="section-title">Choose Your Game</h2>
+                <p class="section-subtitle">Pick your favorite and start the adventure!</p>
+                
+                <div class="games-grid">
+                    <div class="game-card" data-game="number-guess">
+                        <div class="game-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <h3 class="game-title">Number Guessing</h3>
+                        <p class="game-description">
+                            Test your intuition! Guess the secret number with helpful hints.
+                        </p>
+                        <div class="game-features">
+                            <span class="feature">3 Difficulty Levels</span>
+                            <span class="feature">Smart Hints</span>
+                        </div>
+                        <div class="game-points">
+                            <span class="points-label">Your Best:</span>
+                            <span class="points-value" id="number-guess-points">0 pts</span>
+                        </div>
+                        <button class="play-button" onclick="startGame('number-guess')">
+                            <span>Play Now</span>
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+
+                    <div class="game-card" data-game="rps">
+                        <div class="game-icon">
+                            <i class="fas fa-hand-rock"></i>
+                        </div>
+                        <h3 class="game-title">Rock Paper Scissors</h3>
+                        <p class="game-description">
+                            Classic game with a twist! Beat the computer in this timeless battle.
+                        </p>
+                        <div class="game-features">
+                            <span class="feature">Animated Choices</span>
+                            <span class="feature">Score Tracking</span>
+                        </div>
+                        <div class="game-points">
+                            <span class="points-label">Your Best:</span>
+                            <span class="points-value" id="rps-points">0 pts</span>
+                        </div>
+                        <button class="play-button" onclick="startGame('rps')">
+                            <span>Play Now</span>
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+
+                    <div class="game-card" data-game="tictactoe">
+                        <div class="game-icon">
+                            <i class="fas fa-th"></i>
+                        </div>
+                        <h3 class="game-title">Tic Tac Toe</h3>
+                        <p class="game-description">
+                            Strategic thinking meets classic fun! Challenge our smart AI opponent.
+                        </p>
+                        <div class="game-features">
+                            <span class="feature">Smart AI</span>
+                            <span class="feature">Win Animations</span>
+                        </div>
+                        <div class="game-points">
+                            <span class="points-label">Your Best:</span>
+                            <span class="points-value" id="tictactoe-points">0 pts</span>
+                        </div>
+                        <button class="play-button" onclick="startGame('tictactoe')">
+                            <span>Play Now</span>
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+
+                    <div class="game-card" data-game="memory">
+                        <div class="game-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="game-title">Memory Cards</h3>
+                        <p class="game-description">
+                            Train your memory! Find matching pairs in this colorful card game.
+                        </p>
+                        <div class="game-features">
+                            <span class="feature">Multiple Sizes</span>
+                            <span class="feature">Flip Animations</span>
+                        </div>
+                        <div class="game-points">
+                            <span class="points-label">Your Best:</span>
+                            <span class="points-value" id="memory-points">0 pts</span>
+                        </div>
+                        <button class="play-button" onclick="startGame('memory')">
+                            <span>Play Now</span>
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+
+                    <div class="game-card" data-game="snake">
+                        <div class="game-icon">
+                            <i class="fas fa-dragon"></i>
+                        </div>
+                        <h3 class="game-title">Snake Game</h3>
+                        <p class="game-description">
+                            Nostalgic arcade action! Guide your snake to eat food and grow longer.
+                        </p>
+                        <div class="game-features">
+                            <span class="feature">Smooth Movement</span>
+                            <span class="feature">High Scores</span>
+                        </div>
+                        <div class="game-points">
+                            <span class="points-label">Your Best:</span>
+                            <span class="points-value" id="snake-points">0 pts</span>
+                        </div>
+                        <button class="play-button" onclick="startGame('snake')">
+                            <span>Play Now</span>
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leaderboard Section -->
+        <section id="leaderboard" class="leaderboard-section">
+            <div class="container">
+                <h2 class="section-title">Leaderboard</h2>
+                <p class="section-subtitle">See how you stack up against other players!</p>
+                
+                <div class="leaderboard-tabs">
+                    <button class="tab-button active" data-game="number_guess">Number Guess</button>
+                    <button class="tab-button" data-game="rps">Rock Paper Scissors</button>
+                    <button class="tab-button" data-game="tictactoe">Tic Tac Toe</button>
+                    <button class="tab-button" data-game="memory">Memory</button>
+                    <button class="tab-button" data-game="snake">Snake</button>
+                </div>
+                
+                <div class="leaderboard-content">
+                    <div class="leaderboard-table" id="leaderboard-table">
+                        <!-- Leaderboard data will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2 class="section-title">About Clarence Arcade Game Zone</h2>
+                    <div class="about-content">
+                        <div class="about-image-container"><img src="mypicture.png" alt="Mark Clarence M. Cruz" class="about-image"></div>
+                        <div class="about-text">
+                            <p>
+                                A DCI-Python Project and Submitted to the Class of Dr. Julius Caeser Mamaril PSU Professor, Mid Year class of 2024-2025 as Subject Requirments
+                            </p>
+                            <p>
+                                Submitted to: Dr. Julius Caeser Mamaril
+                            </p>
+                            <p>
+                                Submitted by: Mark Clarence M. Cruz
+                            </p>
+                        </div>
+                    </div>
+        </section>
+    </main>
+
+    <!-- Game Modal -->
+    <div id="game-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Game</h3>
+                <button class="close-button" onclick="closeGameModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Game content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Player Modal -->
+    <div id="create-player-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create Your Player Name</h3>
+                <button class="close-button" onclick="closeCreatePlayerModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="player-registration-form">
+                    <p style="color: var(--text-gray); margin-bottom: 1.5rem;">Register to track your game history and points!</p>
+                    <input type="text" id="player-name-input" class="game-input" placeholder="Enter Player Name">
+                    <input type="tel" id="player-phone-input" class="game-input" placeholder="Enter Phone No.">
+                    <input type="password" id="player-password-input" class="game-input" placeholder="Enter Password">
+                    <button class="game-button" id="register-button" onclick="registerPlayer()">Register</button>
+                    <div id="registration-feedback" style="margin-top: 1rem; font-size: 1.1rem;"></div>
+                    <div id="phone-warning" style="display: none; margin-top: 1rem;">
+                        <p style="color: #ff6b6b; margin-bottom: 1rem;">Warning: This number exists in the game. You want to create more Player Name</p>
+                        <p style="color: var(--text-gray); margin-bottom: 1rem;" id="existing-phone-display"></p>
+                        <a href="#" onclick="showForgotPasswordModal()" style="color: var(--primary-color); text-decoration: none; display: block; margin-bottom: 1rem;">Forgot Password?</a>
+                        <button class="game-button" onclick="continueRegistration()">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Log in</h3>
+                <button class="close-button" onclick="closeLoginModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="login-form">
+                    <input type="text" id="login-name-input" class="game-input" placeholder="Enter Player Name">
+                    <input type="password" id="login-password-input" class="game-input" placeholder="Enter Password">
+                    <a href="#" onclick="showForgotPasswordModal()" style="color: var(--primary-color); text-decoration: none; display: block; margin-bottom: 1rem;">Forgot Password?</a>
+                    <button class="game-button" onclick="loginPlayer()">Continue</button>
+                    <div id="login-feedback" style="margin-top: 1rem; font-size: 1.1rem;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div id="forgot-password-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="back-button" onclick="showLoginModal()">
+                    <i class="fas fa-arrow-left"></i> back
+                </button>
+                <button class="close-button" onclick="closeForgotPasswordModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="forgot-password-form">
+                    <p style="color: var(--text-gray); margin-bottom: 1.5rem;">Search your number to track your Player name and Password.</p>
+                    <input type="tel" id="search-phone-input" class="game-input" placeholder="Search your Number">
+                    <button class="game-button" onclick="searchByPhone()">Search</button>
+                    <div id="search-feedback" style="margin-top: 1rem; font-size: 1.1rem;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Results Modal -->
+    <div id="search-results-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="back-button" onclick="showForgotPasswordModal()">
+                    <i class="fas fa-arrow-left"></i> back
+                </button>
+                <button class="close-button" onclick="closeSearchResultsModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="search-results-form">
+                    <p style="color: var(--text-gray); margin-bottom: 1rem;">Search your number to track your Player name and Password.</p>
+                    <p style="color: var(--text-white); margin-bottom: 1.5rem;">For ex. <span id="searched-phone-display"></span></p>
+                    <p style="color: var(--text-gray); margin-bottom: 1rem;">This is the result:</p>
+                    <div id="player-names-list" style="margin-bottom: 1.5rem;">
+                        <!-- Player names will be populated here -->
+                    </div>
+                    <button class="game-button" onclick="nextPage()" style="display: none;" id="next-page-btn">next page</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Player Selection Modal -->
+    <div id="player-selection-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="back-button" onclick="showSearchResultsModal()">
+                    <i class="fas fa-arrow-left"></i> back
+                </button>
+                <button class="close-button" onclick="closePlayerSelectionModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="player-selection-form">
+                    <p style="color: var(--text-gray); margin-bottom: 1rem;">Selected Player Name</p>
+                    <p style="color: var(--text-white); margin-bottom: 1.5rem; font-size: 1.2rem;" id="selected-player-name"></p>
+                    <p style="color: var(--text-gray); margin-bottom: 1.5rem;">Do you want to see your password or change password?</p>
+                    <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                        <button class="game-button" onclick="chooseAction('see')" style="flex: 1;">See</button>
+                        <button class="game-button" onclick="chooseAction('change')" style="flex: 1;">Change</button>
+                    </div>
+                    <button class="game-button" onclick="sendOTP()" id="send-otp-btn">Send OTP NO.</button>
+                    <div id="otp-section" style="display: none; margin-top: 1rem;">
+                        <input type="text" id="otp-input" class="game-input" placeholder="Enter 4-digit OTP" maxlength="4">
+                        <button class="game-button" onclick="verifyOTP()">Verify OTP</button>
+                    </div>
+                    <div id="selection-feedback" style="margin-top: 1rem; font-size: 1.1rem;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Password Show Modal -->
+    <div id="password-show-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="back-button" onclick="showPlayerSelectionModal()">
+                    <i class="fas fa-arrow-left"></i> back
+                </button>
+                <button class="close-button" onclick="closePasswordShowModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="password-show-form">
+                    <p style="color: var(--text-gray); margin-bottom: 1rem;">Password show:</p>
+                    <p style="color: var(--text-white); font-size: 1.2rem;">Password: <span id="displayed-password"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Change Password Modal -->
+    <div id="change-password-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Change Password</h3>
+                <button class="close-button" onclick="closeChangePasswordModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="change-password-form">
+                    <input type="password" id="new-password-input" class="game-input" placeholder="New Password:">
+                    <button class="game-button" onclick="updatePassword()">continue</button>
+                    <div id="change-password-feedback" style="margin-top: 1rem; font-size: 1.1rem;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 PlayZone Arcade. Made by Mark Clarence M. Cruz for gamers everywhere.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+    <!-- OTP Verification Modal -->
+    <div id="otp-verification-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="back-button" onclick="showPlayerSelectionModal()">
+                    <i class="fas fa-arrow-left"></i> back
+                </button>
+                <h3>Verify Number</h3>
+                <button class="close-button" onclick="closeOtpVerificationModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="otp-form">
+                    <p style="color: var(--text-gray); margin-bottom: 1.5rem;">Enter the 4-digit OTP sent to your phone number.</p>
+                    <input type="text" id="otp-input" class="game-input" placeholder="4-digit OTP">
+                    <button class="game-button" id="send-otp-btn" onclick="sendOTP()">Send OTP</button>
+                    <p id="otp-countdown" style="color: var(--text-gray); margin-top: 1rem; display: none;"></p>
+                    <button class="game-button" onclick="verifyOTP()">Verify OTP</button>
+                    <div id="otp-feedback" style="margin-top: 1rem; font-size: 1.1rem;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
